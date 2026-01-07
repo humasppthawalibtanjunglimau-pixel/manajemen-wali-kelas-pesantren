@@ -2,62 +2,94 @@
 <html>
 <head>
   <title>Wali Kelas</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h2 id="judul">Wali Kelas</h2>
+<div class="header">
+  <h2 id="judul">Wali Kelas</h2>
+  <p>بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+</div>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>Nama</th>
-      <th>Nilai</th>
-      <th>Aksi</th>
-    </tr>
-  </thead>
-  <tbody id="tabelSiswa">
-  </tbody>
-</table>
+<div class="container">
 
-<script src="data-siswa.js"></script>
+  <div class="card">
+    <h3>Tambah Siswa</h3>
+    <input type="text" id="namaBaru" placeholder="Nama siswa">
+    <input type="number" id="nilaiBaru" placeholder="Nilai">
+    <button class="btn-tambah" onclick="tambahSiswa()">Tambah Siswa</button>
+  </div>
+
+  <div class="card">
+    <h3>Data Siswa</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Nilai</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="tabelSiswa"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="js/data-siswa.js"></script>
 
 <script>
-  // CEK APAKAH SCRIPT JALAN
-  console.log("Script wali jalan");
-
   var kelasLogin = localStorage.getItem("kelas");
-
-  if (!kelasLogin) {
-    alert("Kelas belum ditemukan. Login ulang.");
-  }
-
   document.getElementById("judul").innerText =
-    "Data Siswa Kelas " + kelasLogin;
+    "Wali Kelas " + kelasLogin;
 
   var tabel = document.getElementById("tabelSiswa");
 
-  dataSiswa.forEach(function(siswa, index) {
-    if (siswa.kelas === kelasLogin) {
-      var row = `
-        <tr>
-          <td>${siswa.nama}</td>
-          <td>${siswa.nilai}</td>
-          <td>
-            <button onclick="hapusSiswa(${index})">Hapus</button>
-          </td>
-        </tr>
-      `;
-      tabel.innerHTML += row;
+  function tampilkan() {
+    tabel.innerHTML = "";
+    dataSiswa.forEach(function(siswa, index) {
+      if (siswa.kelas === kelasLogin) {
+        tabel.innerHTML += `
+          <tr>
+            <td>${siswa.nama}</td>
+            <td>${siswa.nilai}</td>
+            <td>
+              <button onclick="hapusSiswa(${index})">Hapus</button>
+            </td>
+          </tr>
+        `;
+      }
+    });
+  }
+
+  function tambahSiswa() {
+    var nama = document.getElementById("namaBaru").value;
+    var nilai = document.getElementById("nilaiBaru").value;
+
+    if (!nama || !nilai) {
+      alert("Lengkapi data");
+      return;
     }
-  });
+
+    dataSiswa.push({
+      nama: nama,
+      kelas: kelasLogin,
+      nilai: nilai
+    });
+
+    localStorage.setItem("dataSiswa", JSON.stringify(dataSiswa));
+    tampilkan();
+  }
 
   function hapusSiswa(index) {
-    if (confirm("Yakin ingin menghapus siswa ini?")) {
+    if (confirm("Hapus siswa ini?")) {
       dataSiswa.splice(index, 1);
       localStorage.setItem("dataSiswa", JSON.stringify(dataSiswa));
-      location.reload();
+      tampilkan();
     }
   }
+
+  tampilkan();
 </script>
 
 </body>

@@ -1,1 +1,80 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f7f6;
+  margin: 0;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #0f9d58, #0b8457);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.header p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+/* KONTEN */
+.container {
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+/* TABEL */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #0f9d58;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+button {
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* FORM */
+input {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn-tambah {
+  background: #0f9d58;
+}
 

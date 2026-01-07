@@ -5,22 +5,32 @@
 </head>
 <body>
 
-<h2 id="judul"></h2>
+<h2 id="judul">Wali Kelas</h2>
 
 <table border="1">
   <thead>
     <tr>
-      <th>Nama Siswa</th>
+      <th>Nama</th>
       <th>Nilai</th>
+      <th>Aksi</th>
     </tr>
   </thead>
-  <tbody id="tabelSiswa"></tbody>
+  <tbody id="tabelSiswa">
+  </tbody>
 </table>
 
 <script src="data-siswa.js"></script>
 
 <script>
+  // CEK APAKAH SCRIPT JALAN
+  console.log("Script wali jalan");
+
   var kelasLogin = localStorage.getItem("kelas");
+
+  if (!kelasLogin) {
+    alert("Kelas belum ditemukan. Login ulang.");
+  }
+
   document.getElementById("judul").innerText =
     "Data Siswa Kelas " + kelasLogin;
 
@@ -49,3 +59,6 @@
     }
   }
 </script>
+
+</body>
+</html>

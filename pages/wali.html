@@ -37,6 +37,24 @@
       tabel.innerHTML += row;
     }
   });
+  <h3>Tambah Siswa</h3>
+<input id="namaBaru" placeholder="Nama siswa">
+<input id="nilaiBaru" placeholder="Nilai">
+<button onclick="tambahSiswa()">Tambah</button>
+
+<script>
+function tambahSiswa() {
+  var nama = document.getElementById("namaBaru").value;
+  var nilai = document.getElementById("nilaiBaru").value;
+  var kelas = kelasLogin;
+
+  dataSiswa.push({ nama: nama, kelas: kelas, nilai: nilai });
+
+  alert("Siswa ditambahkan (sementara)");
+  location.reload();
+}
+</script>
+
 </script>
 
 </body>

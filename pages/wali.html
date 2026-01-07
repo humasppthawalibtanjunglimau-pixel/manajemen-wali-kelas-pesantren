@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Wali Kelas</title>
-</head>
-<body>
+<h2 id="judul"></h2>
 
-<h2>Halaman Wali Kelas VII A</h2>
-<p>Di sini hanya data kelas Anda</p>
-
-</body>
-</html>
-
+<script>
+  var kelas = localStorage.getItem("kelas");
+  document.getElementById("judul").innerText =
+    "Wali Kelas " + kelas;
+</script>

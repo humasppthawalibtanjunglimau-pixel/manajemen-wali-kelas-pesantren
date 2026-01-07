@@ -1,9 +1,12 @@
 function login() {
+  alert("Tombol login berfungsi");
 
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
 
-  var user = users.find(u => u.username === username && u.password === password);
+  var user = users.find(function(u) {
+    return u.username === username && u.password === password;
+  });
 
   if (!user) {
     alert("Username atau password salah");

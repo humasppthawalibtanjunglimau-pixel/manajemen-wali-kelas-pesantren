@@ -95,6 +95,43 @@
   }
 
   tampilkan();
+  <script>
+  tampilkan();
+
+  var nilai = [];
+  var nama = [];
+
+  dataSiswa.forEach(function(s) {
+    if (s.kelas === kelasLogin) {
+      nama.push(s.nama);
+      nilai.push(Number(s.nilai));
+    }
+  });
+
+  var ctx = document.getElementById('grafikNilai');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: nama,
+      datasets: [{
+        label: 'Nilai Siswa',
+        data: nilai,
+        backgroundColor: '#0f9d58'
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100
+        }
+      }
+    }
+  });
+</script>
+
 </script>
 
 </body>

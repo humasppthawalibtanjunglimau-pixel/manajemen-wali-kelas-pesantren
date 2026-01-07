@@ -3,24 +3,28 @@ function login() {
   var username = document.getElementById("username").value;
   var password = document.getElementById("password").value;
 
-  // DATA USER (contoh)
-  if (username === "admin" && password === "123") {
+  var user = users.find(u => u.username === username && u.password === password);
+
+  if (!user) {
+    alert("Login gagal");
+    return;
+  }
+
+  // SIMPAN DATA LOGIN
+  localStorage.setItem("role", user.role);
+  localStorage.setItem("kelas", user.kelas || "");
+
+  // ARAHKAN SESUAI ROLE
+  if (user.role === "admin") {
     window.location.href = "admin.html";
   }
-
-  else if (username === "wali7a" && password === "123") {
+  else if (user.role === "wali") {
     window.location.href = "wali.html";
   }
-
-  else if (username === "guru" && password === "123") {
+  else if (user.role === "guru") {
     window.location.href = "guru.html";
   }
-
-  else if (username === "pimpinan" && password === "123") {
-    window.location.href = "pimpinan.html";
-  }
-
   else {
-    alert("Username atau password salah");
+    window.location.href = "pimpinan.html";
   }
 }

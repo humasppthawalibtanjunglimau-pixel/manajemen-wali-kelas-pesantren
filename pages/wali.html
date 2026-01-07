@@ -26,36 +26,26 @@
 
   var tabel = document.getElementById("tabelSiswa");
 
-  dataSiswa.forEach(function(siswa) {
+  dataSiswa.forEach(function(siswa, index) {
     if (siswa.kelas === kelasLogin) {
       var row = `
         <tr>
           <td>${siswa.nama}</td>
           <td>${siswa.nilai}</td>
+          <td>
+            <button onclick="hapusSiswa(${index})">Hapus</button>
+          </td>
         </tr>
       `;
       tabel.innerHTML += row;
     }
   });
-  function tambahSiswa() {
-  var nama = document.getElementById("namaBaru").value;
-  var nilai = document.getElementById("nilaiBaru").value;
-  var kelas = kelasLogin;
 
-  dataSiswa.push({
-    nama: nama,
-    kelas: kelas,
-    nilai: nilai
-  });
-
-  localStorage.setItem("dataSiswa", JSON.stringify(dataSiswa));
-
-  alert("Data siswa tersimpan");
-  location.reload();
-}
+  function hapusSiswa(index) {
+    if (confirm("Yakin ingin menghapus siswa ini?")) {
+      dataSiswa.splice(index, 1);
+      localStorage.setItem("dataSiswa", JSON.stringify(dataSiswa));
+      location.reload();
+    }
+  }
 </script>
-
-</script>
-
-</body>
-</html>

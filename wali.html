@@ -70,23 +70,28 @@
   }
 
   function tambahSiswa() {
-    var nama = document.getElementById("namaBaru").value;
-    var nilai = document.getElementById("nilaiBaru").value;
+  var nama = document.getElementById("namaBaru").value;
+  var nilai = document.getElementById("nilaiBaru").value;
 
-    if (!nama || !nilai) {
-      alert("Lengkapi data");
-      return;
-    }
-
-    dataSiswa.push({
-      nama: nama,
-      kelas: kelasLogin,
-      nilai: nilai
-    });
-
-    localStorage.setItem("dataSiswa", JSON.stringify(dataSiswa));
-    tampilkan();
+  if (nama === "" || nilai === "") {
+    alert("Nama dan nilai wajib diisi");
+    return;
   }
+
+  dataSiswa.push({
+    nama: nama,
+    kelas: kelasLogin,
+    nilai: parseInt(nilai)
+  });
+
+  localStorage.setItem("dataSiswa", JSON.stringify(dataSiswa));
+
+  document.getElementById("namaBaru").value = "";
+  document.getElementById("nilaiBaru").value = "";
+
+  tampilkan();
+  location.reload(); // memastikan grafik ikut update
+}
 
   function hapusSiswa(index) {
     if (confirm("Hapus siswa ini?")) {

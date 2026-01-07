@@ -1,4 +1,3 @@
-// CEK APAKAH DATA SUDAH ADA
 var dataSiswa = JSON.parse(localStorage.getItem("dataSiswa"));
 
 if (!dataSiswa) {
